@@ -104,22 +104,6 @@ set noerrorbells visualbell t_vb=
 " sometimes be convenient.
 set mouse+=a
 
-" Try to prevent bad habits like using the arrow keys for movement. This is
-" not the only possible bad habit. For example, holding down the h/j/k/l keys
-" for movement, rather than using more efficient movement commands, is also a
-" bad habit. The former is enforceable through a .vimrc, while we don't know
-" how to prevent the latter.
-" Do this in normal mode...
-"nnoremap <Left>  :echoe "Use h"<CR>
-"nnoremap <Right> :echoe "Use l"<CR>
-"nnoremap <Up>    :echoe "Use k"<CR>
-"nnoremap <Down>  :echoe "Use j"<CR>
-" ...and in insert mode
-"inoremap <Left>  <ESC>:echoe "Use h"<CR>
-"inoremap <Right> <ESC>:echoe "Use l"<CR>
-"inoremap <Up>    <ESC>:echoe "Use k"<CR>
-"inoremap <Down>  <ESC>:echoe "Use j"<CR>
-"for brackets
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
@@ -139,14 +123,8 @@ set shiftwidth=4
 
 set clipboard=unnamed
 
-" autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-" autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-
 imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 imap <F6> <Esc>:w<CR>:!clear;node %<CR>
-
-
-"set background=dark
 
 set shell=powershell
 set shellcmdflag=-c
@@ -174,43 +152,10 @@ set confirm
 " coming from other editors would expect.
 set nostartofline
 
-
-" Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
 set cmdheight=2
 
 set showmatch " show matching braces when text indicator is over them
-
-" vim can autodetect this based on $TERM (e.g. 'xterm-256color')
-" but it can be set to force 256 colors
-" set t_Co=256
-
 set incsearch " incremental search (as string is being typed)
 
 " toggle relative numbering
 nnoremap <C-n> :set rnu!<CR>
-
-" ag / ack.vim
-command -nargs=+ Gag Gcd | Ack! <args>
-nnoremap K :Gag "\b<C-R><C-W>\b"<CR>:cw<CR>
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-    let g:ackprg = 'ag --vimgrep'
-endif
-
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = {
-    \ 'mode': 'passive',
-    \ 'active_filetypes': [],
-    \ 'passive_filetypes': []
-\}
-nnoremap <Leader>s :SyntasticCheck<CR>
-nnoremap <Leader>r :SyntasticReset<CR>
-nnoremap <Leader>i :SyntasticInfo<CR>
-nnoremap <Leader>m :SyntasticToggleMode<CR>
-
-
-
