@@ -72,8 +72,8 @@ while running:
         p1.y += .5
 
     #WALL STUFF
-    vallBottom = pygame.draw.rect(screen,(0,0,255),pygame.Rect(0,550,800,50))
-    vallTop = pygame.draw.rect(screen,(0,0,255),pygame.Rect(0,0,800,50))
+    vallBottom = pygame.draw.rect(screen,(0,0,255),pygame.Rect(0,590,800,5))
+    vallTop = pygame.draw.rect(screen,(0,0,255),pygame.Rect(0,0,800,5))
     if vallBottom.collidepoint((ball.x,ball.y))or vallTop.collidepoint((ball.x,ball.y)):
         ball.movey = - ball.movey
 
